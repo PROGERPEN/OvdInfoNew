@@ -1,5 +1,6 @@
 package hfad.com.ovdinfonew;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private CustomAdapter customAdapter;
-    private List<MyData> data_list;
+    public List<MyData> data_list;
     private String[] titles;
     private ListView drawerList;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         customAdapter = new CustomAdapter(this, data_list);
         recyclerView.setAdapter(customAdapter);
+
 
         titles = getResources().getStringArray(R.array.titles);
         drawerList = (ListView) findViewById(R.id.drawer);

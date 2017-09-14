@@ -2,6 +2,7 @@ package hfad.com.ovdinfonew;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,14 +39,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.title.setText(my_data.get(position).getTitle());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                //Intent fullText = new Intent(context, )
+                Intent fullText = new Intent(context, ActivityFullNews.class);
+                fullText.putExtra(ActivityFullNews.NEWS_NUMBER, position);
+                fullText.putExtra(ActivityFullNews.NEWS_NUMBER2, my_data.get(position).getText());
+                context.startActivity(fullText);
             }
         });
     }
